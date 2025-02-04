@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Min Universitysamling</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>  
+</head>
+<body>
+    <header>
+        <h1>Universitet API demo</h1>
+        <form id="search-form">
+            <input type="text" id="searchInput" class="searchName" placeholder="Sök Universitet land..." required />
+            <select id="results-count">
+                <option value="10">10</option>
+                <option value="20">50</option>
+                <option value="30">100</option>
+                <option value="40">500</option>
+                <option value="100">1000</option>
+            </select>
+            <button type="submit" id="btnSearch">Sök</button>
+        </form>
+    </header>
+
+    <main>
+        <section id="universities-container"></section>
+    </main>
+
+    <footer>
+        <div class="page-buttons">
+            <button id="prev-page-button" class="ppBtn">←</button>
+            <p id="page-count">Sida 1</p>
+            <button id="next-page-button" class="npBtn">→</button>
+        </div>
+        <h2>Kul att blända bland fakta om Universitet på min sida</h2>
+        <p>@Suzan - <span id="currentDate"></span></p>
+    </footer>
+</body>
+</html>
