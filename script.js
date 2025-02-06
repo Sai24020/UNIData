@@ -11,6 +11,7 @@ const projectSummary = {
 
 let latestQuery = "";
 let DEFAULT_SEARCH = "pal";
+let favorites = {latestQuery, DEFAULT_SEARCH};
 
 // DOM-referenser
 const formEl = document.getElementById("search-form");
@@ -140,33 +141,34 @@ function addCheckboxListeners() {
             const universityCard = event.target.closest(".university-card");
             const statusIndicator = universityCard.querySelector(".status-indicator");
             const universityName = event.target.dataset.universityName;
+            const countryID = latestQuery; 
 
             if (event.target.checked) {
                 statusIndicator.classList.remove("red");
                 statusIndicator.classList.add("green");
-                saveToFavorites(universityName);
+                saveToFavorites(universityName, countryID); //behöver fixa den till object
             } else {
                 statusIndicator.classList.remove("green");
                 statusIndicator.classList.add("red");
-                removeFromFavorites(universityName);
+                removeFromFavorites(universityName, countryID);//behöver fixa den till object
             }
         });
     });
 }
 
 // Spara favoriter i localStorage
-function saveToFavorites(universityName) {
+function saveToFavorites(universityName, countryID) {
     let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    if (!favorites.includes(universityName)) {
-        favorites.push(universityName);
+    if (!favorites.includes(universityName, countryID)) {
+        favorites.push(universityName, countryID);   //behöver fixa den object inte array 
         localStorage.setItem("favorites", JSON.stringify(favorites));
     }
 }
 
 // Ta bort från favoriter
-function removeFromFavorites(universityName) {
+function removeFromFavorites(universityName, countryID) {
     let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    favorites = favorites.filter(name => name !== universityName);
+    favorites = favorites.filter(name => name !== universityName, countryID);//behöver fixa den till object
     localStorage.setItem("favorites", JSON.stringify(favorites));
 }
 
