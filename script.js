@@ -105,7 +105,7 @@ function renderUniversitiesToUI(universities) {
     universitiesContainerEl.innerHTML = "";
 
     if (!universities || universities.length === 0) {
-        universitiesContainerEl.innerHTML = "<p><span>Oppps</span>...Inga universitet hittades.</p>";
+        universitiesContainerEl.innerHTML = "<p><span>Oppps...</span><br>Inga universitet hittades.</p>";
         return;
     }
 

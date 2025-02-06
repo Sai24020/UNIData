@@ -76,12 +76,14 @@ button:hover {
     max-width: 1200px;
     p {
         background-color: rgb(234, 255, 0);
-        font-size: 3rem;
+        font-size: 2rem;
         border-radius: 15%;
         text-align: center;
         span {
             color: red;
             font-weight: bold;
+            font-size: 3rem;
+
         }
     }
 }
