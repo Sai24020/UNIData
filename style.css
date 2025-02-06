@@ -69,11 +69,21 @@ button:hover {
 
 #universities-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
     padding: 30px;
     margin: 0 auto;
     max-width: 1200px;
+    p {
+        background-color: rgb(234, 255, 0);
+        font-size: 3rem;
+        border-radius: 15%;
+        text-align: center;
+        span {
+            color: red;
+            font-weight: bold;
+        }
+    }
 }
 
 article {

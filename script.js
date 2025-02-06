@@ -10,6 +10,7 @@ const projectSummary = {
   console.log("Projektbeskrivning:", projectSummary);
 
 let latestQuery = "";
+let DEFAULT_SEARCH = "pal";
 
 // DOM-referenser
 const formEl = document.getElementById("search-form");
@@ -19,6 +20,18 @@ const imageCountEl = document.getElementById("results-count");
 const totalUniversitiesEl = document.getElementById("total-universities"); // Footer
 const nextPageBtn = document.getElementById("next-page-button");
 const prevPageBtn = document.getElementById("prev-page-button");
+
+const initApp = () => {
+    console.log('Initializing app...');
+    //console.log("Hämtade universitet:", data);
+    // Setup event listeners
+    addCheckboxListeners();
+    // Fetch and display 
+    fetchUniversities(DEFAULT_SEARCH).then(displayunversitets);
+};
+
+//App init
+document.addEventListener('DOMContentLoaded', initApp);
 
 // Funktion för att hämta universitet och flagga baserat på land
 async function fetchUniversities(query, count) {
@@ -50,13 +63,13 @@ async function fetchUniversities(query, count) {
 
 
         // Begränsa antalet resultat enligt användarens val
-        const limitedResults = data.slice(0, count);     // Där jag spara direkt i LokalStorage med samma nummber med (Variabel limitResults) jag vilja vissa (3/6/9 ....)
+        const limitedResults = data.slice(0, data.length);     // Där jag spara direkt i LokalStorage alla universitet i samma landet
 
         // Spara i localStorage
         localStorage.setItem("all_universities", JSON.stringify(limitedResults));
 
         // Uppdatera footern med totalantalet universitet  finns i console the totalantalet för universitet i samma länd 
-
+        renderUniversitiesToUI(limitedResults);   //solve problem
         // Tex. sweden(36) spain(97) somalia(17) Chile(65) Philippines(118) Russian Federation(309) Thailand(67)
         //  japan(571) India(462) China(397) France(297) United Kingdom(191) Turkey(184) canada(184) Brazil(181)
 
@@ -92,7 +105,7 @@ function renderUniversitiesToUI(universities) {
     universitiesContainerEl.innerHTML = "";
 
     if (!universities || universities.length === 0) {
-        universitiesContainerEl.innerHTML = "<p>Inga universitet hittades.</p>";
+        universitiesContainerEl.innerHTML = "<p><span>Oppps</span>...Inga universitet hittades.</p>";
         return;
     }
 
