@@ -10,7 +10,7 @@ const projectSummary = {
   console.log("Projektbeskrivning:", projectSummary);
 
 let latestQuery = "";
-let DEFAULT_SEARCH = "pal";
+let DEFAULT_SEARCH = "sverige";
 let favorites = {latestQuery, DEFAULT_SEARCH};
 
 // DOM-referenser
