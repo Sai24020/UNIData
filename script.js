@@ -141,34 +141,34 @@ function addCheckboxListeners() {
             const universityCard = event.target.closest(".university-card");
             const statusIndicator = universityCard.querySelector(".status-indicator");
             const universityName = event.target.dataset.universityName;
-            const countryID = latestQuery; 
-
+            const country = latestQuery; 
+console.log(country);
             if (event.target.checked) {
                 statusIndicator.classList.remove("red");
                 statusIndicator.classList.add("green");
-                saveToFavorites(universityName, countryID); //behöver fixa den till object
+                saveToFavorites(universityName); //behöver fixa den till object
             } else {
                 statusIndicator.classList.remove("green");
                 statusIndicator.classList.add("red");
-                removeFromFavorites(universityName, countryID);//behöver fixa den till object
+                removeFromFavorites(universityName);//behöver fixa den till object
             }
         });
     });
 }
 
 // Spara favoriter i localStorage
-function saveToFavorites(universityName, countryID) {
+function saveToFavorites(universityName) {
     let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    if (!favorites.includes(universityName, countryID)) {
-        favorites.push(universityName, countryID);   //behöver fixa den object inte array 
+    if (!favorites.includes(universityName)) {
+        favorites.push(universityName);   //behöver fixa den object inte array 
         localStorage.setItem("favorites", JSON.stringify(favorites));
     }
 }
 
 // Ta bort från favoriter
-function removeFromFavorites(universityName, countryID) {
+function removeFromFavorites(universityName) {
     let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-    favorites = favorites.filter(name => name !== universityName, countryID);//behöver fixa den till object
+    favorites = favorites.filter(name => name !== universityName);//behöver fixa den till object
     localStorage.setItem("favorites", JSON.stringify(favorites));
 }
 
@@ -205,3 +205,4 @@ checkUniversities();
 // Visar aktuellt datum i UI
 const currentDate = document.getElementById('currentDate');
 currentDate.textContent = new Date().toLocaleDateString();
+

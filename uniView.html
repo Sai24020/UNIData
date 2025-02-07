@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Min filmsamling</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="./script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <h1>Mina Favoriter Universitet API demo</h1>
+        <form id="search-form">
+            <div class="fav-actions">
+                <button id="clearFavBtn">Ta bort alla favoriter</button>
+                <button id="backHomeBtn">Tillbaka till Hem</button>
+              </div>
+              <div>
+                <label for="countrySelect">Välj land:</label>
+                <select id="countrySelect" class="country-select">
+                  <option value="">Alla länder</option>
+                </select>
+                <div id="countryInfo"></div>
+              </div>
+        </form>
+    </header>
+
+    <main>
+    <section id="favoritesSection" class="section">
+        <h2>Mina Favoriter</h2>
+        <div id="universities-favourite-container"></div>
+      </section>
+    </main>
+    <footer>
+      <p>Suzan - <span id="currentDate"></span></p>
+    </footer>
+</body>
+
+</html>
