@@ -35,7 +35,7 @@ const initApp = () => {
 document.addEventListener('DOMContentLoaded', initApp);
 
 // Funktion för att hämta universitet och flagga baserat på land
-async function fetchUniversities(query, count) {
+async function fetchUniversities(query) {
     const endpoint = `http://universities.hipolabs.com/search?country=${query}`;
     const flagEndpoint = `https://restcountries.com/v3.1/name/${query}`;    // https://restcountries.com/#endpoints-capital-city    eller https://countries.petethompson.net/
 
@@ -57,7 +57,14 @@ async function fetchUniversities(query, count) {
         if (!response.ok) throw new Error(`Error fetching universities: ${response.status}`);
         
         const data = await response.json();
+
+
         console.log("Hämtade universitet:", data);
+        /*data.forEach(favorites => {
+            favorites.countryID = nanoid();
+        });*/
+
+
         console.log(flagUrl);
         console.log(data.length);
         //Complete 1 : behöver vissa Hämtade universitet i web browser  ?? hur
